@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect, useCallback} from "react";
+import ProductForm from '../componentes/ProductoDeBase';
+import SearchBar from '../componentes/BuscaProducto';
 import './App.css'
+import ProductItem from '../componentes/EliminarModificarProducto';
+import ProductList from '../componentes/ModificarProductos';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    console.log("Cargando productos iniciales...");
+    setProductos(ProductosDeBase);
+  }, []);
+ 
+  const agregarProducto = useCallback((producto) => {
+    setProductos((prev) => [...prev, { ...producto, id: Date.now() }]);
+  }, []);
+
+  const eliminarProducto = useCallback((id) => {
+    setProductos((prev) => prev.filter((p) => p.id !== id));
+  }, []);
+
+  const modificarProducto = useCallback((productoEditado) => {
+    setProductos((prev) =>
+      prev.map((p) => (p.id === productoEditado.id ? productoEditado : p))
+    );
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+<>
+<div className='AgregarProducto'>
+<ProductForm/>
+<h1>Agregue Productos</h1>
+</div>
+
+<div className='BuscarProducto'>
+  <SearchBar/>
+<h1>Busque su producto</h1>
+</div>
+
+<div className='ListaProducto'>
+<ProductList/>
+</div>
+<div className='EliminarModificarProductos'>
+  <ProductItem/>
+</div>
+
+
+
+</>
+  );
 }
 
-export default App
+export default App;
