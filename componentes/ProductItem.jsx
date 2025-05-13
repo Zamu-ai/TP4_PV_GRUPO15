@@ -2,7 +2,7 @@ function ProductItem(producto){
 
 return(
 <div>
-  <h2 class="titulo-detalle">DETALLE DE PRODUCTO</h2>
+  <h2 className="titulo-detalle">DETALLE DE PRODUCTO</h2>
     <p>id: `${producto.id}` </p>
     <p>nombre: `${producto.nombre}` </p>
     <p>precio: `${producto.precio}` </p>

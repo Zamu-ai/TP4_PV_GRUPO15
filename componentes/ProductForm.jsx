@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function ProductForm({onAdd}) {
+function ProductForm({prod}) {
     const [producto, setProducto] = useState(
-        {
+        {   nombre:"",
             descripcion:"",
              precioUnitario:0,
              descuento:0,
@@ -10,7 +10,7 @@ function ProductForm({onAdd}) {
     );
      function cambiosEntrada(entra){
         const { name, value} = entra.target;
-        setProducto((preventaProd) => ({ ... preventaProd, [name]: name === "precioUnitario" || name ==="descuento" ?
+        setProducto((preventProd) => ({ ... preventProd, [name]: name === "precioUnitario" || name ==="descuento" ?
             Number(value) : value,}));
      }
 
@@ -21,9 +21,10 @@ function CalcularPrecioConDescuento(producto) {
 
     function ProductoBase(agregar){
         agregar.preventDefault();
-        onAdd({...producto, precioConDescuento: CalcularPrecioConDescuento(producto) });
+        prod({...producto, precioConDescuento: CalcularPrecioConDescuento(producto) });
 
         setProducto({
+            nombre:"",
             descripcion:"",
             precioUnitario:0,
             descuento:0,
@@ -31,6 +32,7 @@ function CalcularPrecioConDescuento(producto) {
     }
 return(
     <form onSubmit={ProductoBase}>
+<input type="text" name="nombreProd" placeholder="nombre de producto" value={producto.nombre} onChange={cambiosEntrada} />
 <input type="text" name="descripcion" placeholder="descripcion" value={producto.descripcion} onChange={cambiosEntrada} />
 <input type="number" name="precioUnitario" placeholder="precioUnitario" value={producto.precioUnitario} onChange={cambiosEntrada} />
 <input type="number" name="descuento" placeholder="Descuento %" value={producto.descuento} onChange={cambiosEntrada} />

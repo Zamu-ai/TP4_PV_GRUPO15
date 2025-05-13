@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback} from "react";
+import { useState} from "react";
 import ProductForm from '../componentes/ProductForm.jsx';
 import SearchBar from '../componentes/BuscaProducto';
 import './App.css'
@@ -13,9 +13,9 @@ function App() {
   //   setProductos(ProductForm);
   // }, []);
  
-  // const agregarProducto = useCallback((producto) => {
-  //   setProductos((prev) => [...prev, { ...producto, id: Date.now() }]);
-  // }, []);
+  const agregarProducto = ((producto) => {
+    setProductos((prev) => [...prev, { ...producto, id: Math.random() }]);
+  }, []);
 
   // const eliminarProducto = useCallback((id) => {
   //   setProductos((prev) => prev.filter((p) => p.id !== id));
@@ -30,7 +30,7 @@ function App() {
   return (
 <>
 <div className='AgregarProducto'>
-<ProductForm/>
+<ProductForm prod={agregarProducto}/>
 <h1>Agregue Productos</h1>
 </div>
 
@@ -40,7 +40,7 @@ function App() {
 </div>
 
 <div className='ListaProducto'>
-<ProductList productos={productos} setProductos={setProductos}/>
+<ProductList lista={productos} setProductos={setProductos}/>
 </div>
 
 <div className='EliminarModificarProductos'>
