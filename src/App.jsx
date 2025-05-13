@@ -1,31 +1,31 @@
 import { useState, useEffect, useCallback} from "react";
-import ProductForm from '../componentes/ProductoDeBase';
+import ProductForm from '../componentes/ProductForm.jsx';
 import SearchBar from '../componentes/BuscaProducto';
 import './App.css'
-import ProductItem from '../componentes/EliminarModificarProducto';
-import ProductList from '../componentes/ModificarProductos';
+import ProductItem from '../componentes/ProductItem';
+import ProductList from '../componentes/ProductList.jsx';
 
 function App() {
-  const [productos, setProductos] = useState([]);
+   const [productos, setProductos] = useState([]);
 
-  useEffect(() => {
-    console.log("Cargando productos iniciales...");
-    setProductos(ProductosDeBase);
-  }, []);
+  // useEffect(() => {
+  //   console.log("Cargando productos iniciales...");
+  //   setProductos(ProductForm);
+  // }, []);
  
-  const agregarProducto = useCallback((producto) => {
-    setProductos((prev) => [...prev, { ...producto, id: Date.now() }]);
-  }, []);
+  // const agregarProducto = useCallback((producto) => {
+  //   setProductos((prev) => [...prev, { ...producto, id: Date.now() }]);
+  // }, []);
 
-  const eliminarProducto = useCallback((id) => {
-    setProductos((prev) => prev.filter((p) => p.id !== id));
-  }, []);
+  // const eliminarProducto = useCallback((id) => {
+  //   setProductos((prev) => prev.filter((p) => p.id !== id));
+  // }, []);
 
-  const modificarProducto = useCallback((productoEditado) => {
-    setProductos((prev) =>
-      prev.map((p) => (p.id === productoEditado.id ? productoEditado : p))
-    );
-  }, [])
+  // const modificarProducto = useCallback((productoEditado) => {
+  //   setProductos((prev) =>
+  //     prev.map((p) => (p.id === productoEditado.id ? productoEditado : p))
+  //   );
+  // }, [])
 
   return (
 <>
@@ -40,12 +40,12 @@ function App() {
 </div>
 
 <div className='ListaProducto'>
-<ProductList/>
+<ProductList productos={productos} setProductos={setProductos}/>
 </div>
+
 <div className='EliminarModificarProductos'>
   <ProductItem/>
 </div>
-
 
 
 </>

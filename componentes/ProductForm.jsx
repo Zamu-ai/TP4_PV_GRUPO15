@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 function ProductForm({onAdd}) {
     const [producto, setProducto] = useState(
         {
@@ -11,12 +12,12 @@ function ProductForm({onAdd}) {
         const { name, value} = entra.target;
         setProducto((preventaProd) => ({ ... preventaProd, [name]: name === "precioUnitario" || name ==="descuento" ?
             Number(value) : value,}));
-        
+     }
+
 function CalcularPrecioConDescuento(producto) {
     return producto.precioUnitario * (1- producto.descuento /100);
 }
-     }
-
+     
 
     function ProductoBase(agregar){
         agregar.preventDefault();
@@ -34,6 +35,7 @@ return(
 <input type="number" name="precioUnitario" placeholder="precioUnitario" value={producto.precioUnitario} onChange={cambiosEntrada} />
 <input type="number" name="descuento" placeholder="Descuento %" value={producto.descuento} onChange={cambiosEntrada} />
 <button type="submit">Agregar Producto</button>
+
 </form>
 
 );
