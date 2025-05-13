@@ -1,17 +1,20 @@
 import React, {useMemo,useState} from 'react';
 
-function SearchBar(bucar){
-const {TerminosBusueda,setTerminos} = useState ("");
+function SearchBar(buscar){
+const {TerminosBusqueda,setTerminos} = useState ("");
+
 function cambiosBuscar(dato){
-setTerminos(dato.target.value);
+  console.log(dato.target.value)
+  setTerminos(dato.target.value);
 }
+
   return (
     <div>
     <div>BuscarProducto</div>
-          <input type="text" placeholder="Buscar producto..." onChange={handleChange} />
-      <ul>
-        {productosFiltrados.map(p => <li key={p.id}>{p.descripcion}</li>)}
-      </ul>
+          <input type="text" placeholder="Buscar producto..." onChange={cambiosBuscar} />
+      {/* <ul>
+        {TerminosBusqueda.map(p => <li key={p.id}>{p.descripcion}</li>)}
+      </ul> */}
     </div>
   );
 
