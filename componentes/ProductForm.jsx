@@ -36,9 +36,9 @@ function CalcularPrecioConDescuento(producto) {
         setProducto({
             nombreProd:"",
             descripcion:"",
-            precioUnitario:0,
-            descuento:0,
-            stock:0,
+            precioUnitario:undefined,
+            descuento:undefined,
+            stock:undefined,
             
         });
         
@@ -47,23 +47,22 @@ return(
     <form className="formulario" onSubmit={ProductoBase}>
      
         <label >Nombre del producto
-         <input type="text" name="nombreProd" placeholder="nombre de producto" value={producto.nombreProd} onChange={cambiosEntrada} />
+         <input type="text" name="nombreProd" placeholder="nombre de producto" value={producto.nombreProd} onChange={cambiosEntrada} required autoComplete="off"/>
         </label>
         <label>Descripcion del producto
-            <input type="text" name="descripcion" placeholder="descripcion" value={producto.descripcion} onChange={cambiosEntrada} />
+            <input type="text" name="descripcion" placeholder="descripcion" value={producto.descripcion} onChange={cambiosEntrada} required autoComplete="off"/>
         </label>
-        <label>precio
-            <input type="number" name="precioUnitario" value={producto.precioUnitario} onChange={cambiosEntrada} />
+        <label>Precio
+            <input type="number" name="precioUnitario" min="0" placeholder="Ingrese precio" value={producto.precioUnitario || ""} onChange={cambiosEntrada} required/>
         </label>
-        <label>descuento
-        <input type="number" name="descuento"  value={producto.descuento} onChange={cambiosEntrada} />
+        <label>Descuento
+        <input type="number" name="descuento" min="0" placeholder="Ingrese descuento" value={producto.descuento || ""} onChange={cambiosEntrada} required/>
         </label>
-        <label>stock
-        <input type="number" name="stock" value={producto.stock} onChange={cambiosEntrada}/>
+        <label>Stock
+        <input type="number" name="stock" min="0" placeholder="Ingrese stock" value={producto.stock || ""} onChange={cambiosEntrada} required/>
         </label>
-<button type="submit">{productoaModificar ? "Modificar Producto" : "Agregar Producto"}</button> {/*boton dinamico que se modifica si se cambia o se agrega un producto */}
-
-</form>
+        <button type="submit" className="btn-agregar">{productoaModificar ? "Modificar Producto" : "Agregar Producto"}</button> {/*boton dinamico que se modifica si se cambia o se agrega un producto */}
+    </form>
 
 );
 }

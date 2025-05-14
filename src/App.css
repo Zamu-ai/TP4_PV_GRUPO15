@@ -1,3 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #888;
+}
+
+.contenedorPrincipal {
+  background-color: #3c3c3c;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+input {
+  padding: 8px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.titulo-agregar {
+  font-size: 30px;
+}
+
+.titulo-buscar {
+  font-size: 30px;
+}
+
+.titulo-lista {
+  font-size: 25px;
+}
+
+.btn-agregar {
+  display: block;
+  margin: 10px auto;
+  font-size: 15px;
+}
+
+.detalle-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*---------------------------------------------------------------*/
 #root {
   max-width: 1280px;
   margin: 0 auto;
