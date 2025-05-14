@@ -2,13 +2,17 @@ function ProductItem({producto,setProductos,modificarProd}){
    //const [Modificar, setModificar] = useState(); //hook de estados de producto
 
 const Eliminar = () => {
-   setProductos(productos => productos.filter(elementos => elementos.id !== producto.id))
+   setProductos(productos => productos.filter(elementos => elementos.id !== producto.id));
+   modificarProd(null);
 };   
 
 const ModificarProd= () => { //funcion que llama a modificarprod con el producto seleccionado
  modificarProd({...producto})
 
 };
+ const CerrarDetalle = () => {
+    modificarProd(null); // ← Cierra sin eliminar ni modificar
+  };
 
 return(
 <div className="detalle-producto">
@@ -23,6 +27,7 @@ return(
 
 <button onClick={Eliminar}>Eliminar producto</button>
 <button onClick={ModificarProd}>Modificar producto</button>
+<button onClick={CerrarDetalle}>Cerrar</button>
 
 </div>
 )

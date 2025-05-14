@@ -18,9 +18,22 @@ function App() {
     setproductoSeleccionado(producto);
   };
  
-const modificarProd = (productoModificado) => {  //recibe un producto y llama al hook setProductos, busca por el id del producto, si lo encuentra actualiza el valor sino deja el producto como está
-    setProductos((prev) => prev.map(elemento => elemento.id == productoModificado.id ? productoModificado : elemento))
+const modificarProd = (productoModificado) => {
+  if (productoModificado === null) {
+  
+    setproductoSeleccionado(null);
+    return;
   }
+
+  setProductos((prev) =>
+    prev.map(elemento =>
+      elemento.id === productoModificado.id ? productoModificado : elemento
+    )
+  );
+
+  setproductoSeleccionado(null);
+};
+
 
 
 
