@@ -1,6 +1,6 @@
 import { useState} from "react";
 import ProductForm from '../componentes/ProductForm.jsx';
-import SearchBar from '../componentes/BuscaProducto';
+import BuscaProducto from '../componentes/BuscaProducto';
 import './App.css'
 import ProductItem from '../componentes/ProductItem';
 import ProductList from '../componentes/ProductList.jsx';
@@ -26,33 +26,32 @@ const modificarProd = (productoModificado) => {  //recibe un producto y llama al
 
 
   return (
-<>
-<div className='AgregarProducto'>
-<ProductForm prod={agregarProducto} productoaModificar={productoSeleccionado} modifprod={modificarProd}/>
-<h1>Agregue Productos</h1>
-</div>
+    <>
+    <div className="contenedorPrincipal">
+      <div className="AgregarProducto">
+        <h1 className="titulo-agregar">Agregar Producto</h1>
+        <ProductForm prod={agregarProducto} productoaModificar={productoSeleccionado} modifprod={modificarProd}/>
+      </div>
 
-<div className='BuscarProducto'>
-  <SearchBar/>
-<h1>Busque su producto</h1>
-</div>
+      <div className="BuscarProducto">
+        <h1 className="titulo-buscar">Buscar producto</h1>
+        <BuscaProducto productos={productos}/>
+      </div>
 
-<div className='ListaProducto'>
-<ProductList lista={productos} seleccionarProducto={seleccionarProducto}/>   {/*llamo al componente lista y le paso el array de producto y el setproductos es para modificar o eliminar  */} 
-</div>
+      <div className="ListaProducto">
+        <h2 className="titulo-lista">LISTA DE PRODUCTOS</h2>
+        <ProductList lista={productos} seleccionarProducto={seleccionarProducto}/>  
+      </div>
 
- 
-<div className='EliminarModificarProductos'>
-   {productoSeleccionado ? (
-  <ProductItem producto={productoSeleccionado} setProductos={setProductos}  modificarProd={modificarProd}/>
-   ):(
-    <h2>seleccione producto</h2>
-   )}
-</div>
-
-
-
-</>
+      <div className="EliminarModificarProductos">
+        {productoSeleccionado ? (
+          <ProductItem producto={productoSeleccionado} setProductos={setProductos} modificarProd={modificarProd}/>
+        ) : (
+          <h2>Seleccione un producto</h2>
+        )}
+      </div>
+      </div>
+    </>
   );
 }
 

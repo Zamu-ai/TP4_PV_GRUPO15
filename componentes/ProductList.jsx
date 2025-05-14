@@ -2,7 +2,6 @@
 function ProductList({lista,seleccionarProducto}){
     return(
         <div>
-            <h2>LISTA DE PRODUCTOS</h2>
             {lista.length === 0 ? (          //condicion de lista vacia 
                 <p>No hay productos disponibles.</p>
             ) : (                           //condicion de lista con elementos
