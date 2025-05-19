@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 function ProductForm({prod,productoaModificar,modifprod}) {
     const [producto, setProducto] = useState (
         {   nombreProd:"",
-            descripcion:"",
+            marca:"",
              precioUnitario:0,
              descuento:0,
              stock:0,
@@ -35,7 +35,7 @@ function CalcularPrecioConDescuento(producto) {
 
         setProducto({
             nombreProd:"",
-            descripcion:"",
+            marca:"",
             precioUnitario:undefined,
             descuento:undefined,
             stock:undefined,
@@ -49,8 +49,8 @@ return(
         <label >Nombre del producto
          <input type="text" name="nombreProd" placeholder="nombre de producto" value={producto.nombreProd} onChange={cambiosEntrada} required autoComplete="off"/>
         </label>
-        <label>Descripcion del producto
-            <input type="text" name="descripcion" placeholder="descripcion" value={producto.descripcion} onChange={cambiosEntrada} required autoComplete="off"/>
+        <label>Marca del producto
+            <input type="text" name="marca" placeholder="nombre de la marca" value={producto.marca} onChange={cambiosEntrada} required autoComplete="off"/>
         </label>
         <label>Precio
             <input type="number" name="precioUnitario" min="0" placeholder="Ingrese precio" value={producto.precioUnitario || ""} onChange={cambiosEntrada} required/>
