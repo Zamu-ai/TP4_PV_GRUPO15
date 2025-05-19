@@ -3,7 +3,7 @@ import { useState } from "react";
 function ProductList({ lista, seleccionarProducto }) {
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
-    function productoSeleccionado(producto) {
+    function ProductoSeleccionado(producto) {
         setProductoSeleccionado(productoSeleccionado?.id === producto.id ? null : producto);
     }
 
@@ -15,7 +15,7 @@ function ProductList({ lista, seleccionarProducto }) {
                 lista.map((p) => (
                     <div className="lista"
                         key={p.id}
-                        onClick={() => productoSeleccionado(p)}
+                        onClick={() => ProductoSeleccionado(p)}
                         // AGREGAR AL CSS al pasar el cursor lo sombrea style={{ cursor: 'pointer', marginBottom: '10px', padding: '5px', border: '1px solid #ccc' }}
                     >
                         <h3>{p.nombreProd}</h3>
